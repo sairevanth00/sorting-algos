@@ -45,4 +45,48 @@ function insertionSort(arr) {
 
 console.log(insertionSort(arr));
 
+let arr3 = [7,6,5, 2, 1, 5, 8, 3, 9, 4];
+
+function merge(arr, l, m, r) {
+    let temp = [];
+    let left = l;
+    let right = m+1;
+    
+    while(left <= m && right <= r) {
+        if(arr[left] <= arr[right]) {
+            temp.push(arr[left]);
+            left++;
+        } else {
+            temp.push(arr[right]);
+            right++;
+        }
+    };
+    
+    while(left<= m) {
+        temp.push(arr[left]);
+        left++;
+    }
+    while(right <= r) {
+        temp.push(arr[right]);
+        right++;
+    };
+    
+    for(let i = l; i <= r; i++) {
+        arr[i] = temp[i - l];
+    }
+}
+
+function mergeSort(arr, l, r) {
+    let m = Math.floor((l+r)/2)
+    if(l == r) {
+        return;
+    };
+    mergeSort(arr, l, m);
+    mergeSort(arr, m+1, r);
+    
+    merge(arr, l, m, r);
+    return arr;
+}
+
+console.log(mergeSort(arr3, 0, arr.length-1))
 
