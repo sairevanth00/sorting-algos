@@ -31,7 +31,7 @@ function bubbleSort(arr) {
     return arr;
 }
 
-// find the current index of num, & from there swap to the left.
+// Take an element & place it in its correct position, the current index of num not in correct check the left and swap it to current by doing this until makes the correct index.
 function insertionSort(arr) {
     for(let i = 0; i < arr.length; i++) {
        let j = i;
@@ -89,4 +89,3 @@ function mergeSort(arr, l, r) {
 }
 
 console.log(mergeSort(arr3, 0, arr.length-1))
-
