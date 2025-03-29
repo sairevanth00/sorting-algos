@@ -31,7 +31,11 @@ function bubbleSort(arr) {
     return arr;
 }
 
+<<<<<<< HEAD
 // Take an element & place it in its correct position, the current index of num not in correct check the left and swap it to current by doing this until makes the correct index.
+=======
+// Take an element & place it in its correct position, the current index of num not in correct check the left and swap it to current by doing this until makes the current index.
+>>>>>>> 0be08c7b8a2851b70246fb83398244de1e1f4869
 function insertionSort(arr) {
     for(let i = 0; i < arr.length; i++) {
        let j = i;
