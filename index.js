@@ -47,6 +47,7 @@ console.log(insertionSort(arr));
 
 let arr3 = [7,6,5, 2, 1, 5, 8, 3, 9, 4];
 
+// Divide the arr into to, sort array & merge into one.
 function merge(arr, l, m, r) {
     let temp = [];
     let left = l;
@@ -89,3 +90,42 @@ function mergeSort(arr, l, r) {
 }
 
 console.log(mergeSort(arr3, 0, arr.length-1))
+
+/*
+ 1.) Pick up a pivot element, place it in its correct place in the sorted array.
+ 2.) Smaller on the left & larger on the right.
+ */
+ function helper(arr, l, r) {
+    
+  let pivortEl = arr[l];
+  
+  let i = l;
+  let j = r;
+  while(i < j) {
+      while(arr[i] <= pivortEl && i <= (r-1)) {
+        i++;
+      };
+      // Why '>' in the below while & why above while is '<=' ?
+      // because if pivortEl hase duplicates we are deciding the pivort left all less & right all greater.
+      while(arr[j] > pivortEl && j >= (l + 1)) {
+        j--;
+      };
+      
+      if(i < j) {
+          [arr[i], arr[j]] = [arr[j], arr[i]]
+      }
+  };
+  [arr[l], arr[j]] = [arr[j], arr[l]];
+  return j;
+}
+
+function quickSort(arr, l, r) {
+  if(l < r) {
+      let partitionIdx = helper(arr, l, r);
+      quickSort(arr, l, partitionIdx - 1);
+      quickSort(arr, partitionIdx + 1, r);
+      
+  }
+  return arr;
+}
+console.log(quickSort(arr, 0, arr.length -1))
